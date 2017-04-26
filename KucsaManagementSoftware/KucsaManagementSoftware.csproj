@@ -223,6 +223,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\CreateDatabase.sql" />
+    <Content Include="Screenshots\Login_Sketch.png" />
+    <Content Include="Screenshots\MainWindow_Sketch.png" />
+    <Content Include="Screenshots\Manage_Courses_Sketch.png" />
+    <Content Include="Screenshots\Member_Details_Sketch.png" />
+    <Content Include="Screenshots\Successful_Save_Sketch.png" />
     <None Include="Resources\profile.bmp" />
   </ItemGroup>
   <ItemGroup Condition="$(VisualStudioVersion) == '15.0'">
@@ -239,6 +244,7 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <SsdtUnitTestVersion>3.1</SsdtUnitTestVersion>
