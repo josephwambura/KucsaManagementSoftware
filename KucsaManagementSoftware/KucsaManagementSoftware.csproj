@@ -223,11 +223,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\CreateDatabase.sql" />
+    <Content Include="Screenshots\Install_Modern_Metro_UI_Sketch.png" />
     <Content Include="Screenshots\Login_Sketch.png" />
     <Content Include="Screenshots\MainWindow_Sketch.png" />
     <Content Include="Screenshots\Manage_Courses_Sketch.png" />
     <Content Include="Screenshots\Member_Details_Sketch.png" />
     <Content Include="Screenshots\Successful_Save_Sketch.png" />
+    <Content Include="Screenshots\Windows_Forms_Without_MetroUI_Sketch.png" />
+    <Content Include="Screenshots\Windows_Forms_With_MetroUI_Sketch.png" />
     <None Include="Resources\profile.bmp" />
   </ItemGroup>
   <ItemGroup Condition="$(VisualStudioVersion) == '15.0'">

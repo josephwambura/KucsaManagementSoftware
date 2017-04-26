@@ -89,6 +89,7 @@
             this.Name = "MainWindow";
             this.Resizable = false;
             this.Text = "Kucsa Club Association Sotware";
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.metroGridPojects)).EndInit();
             this.ResumeLayout(false);
 
