@@ -1,3 +1,4 @@
+
 # KucsaManagementSoftware
 
 The software program is a windows forms application implemented using CSharp language, and the UI controls made beautiful with the modern-metro-UI. It uses entify-framework for the CRUD operations. 
@@ -10,6 +11,9 @@ Download [Visual Studio](https://www.visualstudio.com/downloads/) from their off
 
 ## Sample
 <a href="https://www.kedevelopers.com/kucsamanagementsoftware/sample"><img alt="View the demo on Ke Developers" src="https://github.com/dansef/KucsaManagementSoftware/blob/master/KucsaManagementSoftware/Screenshots/MainWindow_Sketch.png" width="200" height="100"/></a><br>
+<a href="https://www.kedevelopers.com/kucsamanagementsoftware/sample"><img alt="View the demo on Ke Developers" src="https://github.com/dansef/KucsaManagementSoftware/blob/master/KucsaManagementSoftware/Screenshots/Member_Details_Sketch.png" width="200" height="100"/></a><br>
+<a href="https://www.kedevelopers.com/kucsamanagementsoftware/sample"><img alt="View the demo on Ke Developers" src="https://github.com/dansef/KucsaManagementSoftware/blob/master/KucsaManagementSoftware/Screenshots/Manage_Courses_Sketch.png" width="200" height="100"/></a><br>
+<a href="https://www.kedevelopers.com/kucsamanagementsoftware/sample"><img alt="View the demo on Ke Developers" src="https://github.com/dansef/KucsaManagementSoftware/blob/master/KucsaManagementSoftware/Screenshots/Successful_Save_Sketch.png" width="200" height="100"/></a><br>
 
 ## Wiki
 ### General
@@ -35,8 +39,9 @@ If you are familiar with CSharp - you already know how to use this software.
  2. Create the sql database (Required!).
  3. Create a new query pointing to your database, the execute the [CreateDatabase.sql](https://github.com/dansef/KucsaManagementSoftware/blob/master/KucsaManagementSoftware/Data/CreateDatabase.sql) to get started, if you don't know how to do it.
  4. Set the entity-framework.
- 5. You may opt to use Sql manually, also possible, but why go back to the primates age. You are all set, just run the app by hitting F5 in the Visual Studio.
- 6. You may be required to change the Form to MetroForm in every View Code of a Windows Form to get the magic of Metro-UI
+ 5. You may opt to use Sql manually, also possible, but why go back to the primates age.  
+ 6. You are all set, just run the app by hitting F5 in the Visual Studio.
+ 7. You may be required to change the Form to MetroForm in every View Code of a Windows Form to get the magic of Metro-UI from
 
 ```csharp
 using System.Windows.Forms;
@@ -59,7 +64,7 @@ namespace KucsaManagementSoftware
     public partial class FormMain : MetroForm { //Some Code in here }
 }
 ```
- 6. You are done! 
+ 8. You are done! 
 
 ## Special thanks
 Thanks to [Ke Developers](https://www.kedevelopers.com) and [KUCSA](https://www.kedevelopers.com) for their continued support.
