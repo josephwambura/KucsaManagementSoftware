@@ -3,17 +3,17 @@
 
 The software program is a windows forms application implemented using CSharp language, and the UI controls made beautiful with the modern-metro-UI. It uses entify-framework for the CRUD operations. 
 
-![Login UI](https://github.com/dansef/KucsaManagementSoftware/blob/master/KucsaManagementSoftware/Screenshots/MainWindow_Sketch.png)
+![Modern UI](https://github.com/dansef/KucsaManagementSoftware/blob/master/KucsaManagementSoftware/Screenshots/MainWindow_Sketch.png)
 
 ## Visual Studio 2017 
 This is a visual studio solution.
 Download [Visual Studio](https://www.visualstudio.com/downloads/) from their official website.
 
 ## Sample
-<a href="https://www.kedevelopers.com/kucsamanagementsoftware/sample"><img alt="View the demo on Ke Developers" src="https://github.com/dansef/KucsaManagementSoftware/blob/master/KucsaManagementSoftware/Screenshots/Login_Sketch.png" width="200" height="100"/></a><br>
-<a href="https://www.kedevelopers.com/kucsamanagementsoftware/sample"><img alt="View the demo on Ke Developers" src="https://github.com/dansef/KucsaManagementSoftware/blob/master/KucsaManagementSoftware/Screenshots/Member_Details_Sketch.png" width="200" height="100"/></a><br>
-<a href="https://www.kedevelopers.com/kucsamanagementsoftware/sample"><img alt="View the demo on Ke Developers" src="https://github.com/dansef/KucsaManagementSoftware/blob/master/KucsaManagementSoftware/Screenshots/Manage_Courses_Sketch.png" width="200" height="100"/></a><br>
-<a href="https://www.kedevelopers.com/kucsamanagementsoftware/sample"><img alt="View the demo on Ke Developers" src="https://github.com/dansef/KucsaManagementSoftware/blob/master/KucsaManagementSoftware/Screenshots/Successful_Save_Sketch.png" width="200" height="100"/></a><br>
+<a href="https://www.kedevelopers.com/kucsamanagementsoftware/sample"><img alt="View the demo on Ke Developers" src="https://github.com/dansef/KucsaManagementSoftware/blob/master/KucsaManagementSoftware/Screenshots/Login_Sketch.png" width="200" height="100"/></a>
+<a href="https://www.kedevelopers.com/kucsamanagementsoftware/sample"><img alt="View the demo on Ke Developers" src="https://github.com/dansef/KucsaManagementSoftware/blob/master/KucsaManagementSoftware/Screenshots/Member_Details_Sketch.png" width="200" height="100"/></a>
+<a href="https://www.kedevelopers.com/kucsamanagementsoftware/sample"><img alt="View the demo on Ke Developers" src="https://github.com/dansef/KucsaManagementSoftware/blob/master/KucsaManagementSoftware/Screenshots/Manage_Courses_Sketch.png" width="200" height="100"/></a>
+<a href="https://www.kedevelopers.com/kucsamanagementsoftware/sample"><img alt="View the demo on Ke Developers" src="https://github.com/dansef/KucsaManagementSoftware/blob/master/KucsaManagementSoftware/Screenshots/Successful_Save_Sketch.png" width="200" height="100"/></a>
 
 ## Wiki
 ### General
@@ -52,7 +52,7 @@ namespace KucsaManagementSoftware
     public partial class FormMain : Form { //Some Code in here }
 }
 ```
- 
+  ![Windows_Forms UI](https://github.com/dansef/KucsaManagementSoftware/blob/master/KucsaManagementSoftware/Screenshots/Windows_Forms_Without_MetroUI_Sketch.png)
 ```csharp
 using System.Windows.Forms;
 using MetroFramework.Forms;
@@ -64,6 +64,7 @@ namespace KucsaManagementSoftware
     public partial class FormMain : MetroForm { //Some Code in here }
 }
 ```
+ ![Windows_Forms UI](https://github.com/dansef/KucsaManagementSoftware/blob/master/KucsaManagementSoftware/Screenshots/Windows_Forms_With_MetroUI_Sketch.png)
  8. You are done! 
 
 ## Special thanks
