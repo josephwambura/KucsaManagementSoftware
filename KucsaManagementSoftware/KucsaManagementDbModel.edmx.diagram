@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="20f827daa1814a81b51875a142e28e32" Name="Diagram1">
+        <EntityTypeShape EntityType="KucsaManagementDatabaseModel.TblCourse" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KucsaManagementDatabaseModel.TblLanguage" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KucsaManagementDatabaseModel.TblMember" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="KucsaManagementDatabaseModel.TblModule" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KucsaManagementDatabaseModel.TblProject" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KucsaManagementDatabaseModel.TblRole" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <AssociationConnector Association="KucsaManagementDatabaseModel.FK_TblMember_TblCourse" ManuallyRouted="false" />
+        <AssociationConnector Association="KucsaManagementDatabaseModel.FK_TblProject_TblLanguage" ManuallyRouted="false" />
+        <AssociationConnector Association="KucsaManagementDatabaseModel.FK_TblMember_TblModule" ManuallyRouted="false" />
+        <AssociationConnector Association="KucsaManagementDatabaseModel.FK_TblMember_TblRole" ManuallyRouted="false" />
+        <AssociationConnector Association="KucsaManagementDatabaseModel.FK_TblProject_TblMember" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

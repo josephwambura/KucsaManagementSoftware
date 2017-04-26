@@ -1,0 +1,416 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="KucsaManagementDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TblCourse">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CourseFaculty" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblLanguage">
+          <Key>
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="LanguageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Language" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LanguageAuthor" Type="nvarchar" MaxLength="50" />
+          <Property Name="LanguageWebsite" Type="nvarchar" MaxLength="250" />
+          <Property Name="LanguageTuitorial" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TblMember">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="MemberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MemberRegistration" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MemberThumbnail" Type="image" />
+          <Property Name="MemberBigPicture" Type="image" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="ModuleId" Type="int" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="TimeJoined" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblModule">
+          <Key>
+            <PropertyRef Name="ModuleId" />
+          </Key>
+          <Property Name="ModuleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ModuleLeader" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblProject">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectTitle" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ProjectDesc" Type="varchar(max)" Nullable="false" />
+          <Property Name="ProjectLink" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="ProjectThumbnail" Type="image" />
+          <Property Name="ProjectBigPic" Type="image" />
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+          <Property Name="MemberId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TblMember_TblCourse">
+          <End Role="TblCourse" Type="Self.TblCourse" Multiplicity="1" />
+          <End Role="TblMember" Type="Self.TblMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCourse">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="TblMember">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMember_TblModule">
+          <End Role="TblModule" Type="Self.TblModule" Multiplicity="0..1" />
+          <End Role="TblMember" Type="Self.TblMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblModule">
+              <PropertyRef Name="ModuleId" />
+            </Principal>
+            <Dependent Role="TblMember">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMember_TblRole">
+          <End Role="TblRole" Type="Self.TblRole" Multiplicity="1" />
+          <End Role="TblMember" Type="Self.TblMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblRole">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="TblMember">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblProject_TblLanguage">
+          <End Role="TblLanguage" Type="Self.TblLanguage" Multiplicity="1" />
+          <End Role="TblProject" Type="Self.TblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblLanguage">
+              <PropertyRef Name="LanguageId" />
+            </Principal>
+            <Dependent Role="TblProject">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblProject_TblMember">
+          <End Role="TblMember" Type="Self.TblMember" Multiplicity="1" />
+          <End Role="TblProject" Type="Self.TblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblMember">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="TblProject">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KucsaManagementDatabaseModelStoreContainer">
+          <EntitySet Name="TblCourse" EntityType="Self.TblCourse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblLanguage" EntityType="Self.TblLanguage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblMember" EntityType="Self.TblMember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblModule" EntityType="Self.TblModule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblProject" EntityType="Self.TblProject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblRole" EntityType="Self.TblRole" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TblMember_TblCourse" Association="Self.FK_TblMember_TblCourse">
+            <End Role="TblCourse" EntitySet="TblCourse" />
+            <End Role="TblMember" EntitySet="TblMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMember_TblModule" Association="Self.FK_TblMember_TblModule">
+            <End Role="TblModule" EntitySet="TblModule" />
+            <End Role="TblMember" EntitySet="TblMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMember_TblRole" Association="Self.FK_TblMember_TblRole">
+            <End Role="TblRole" EntitySet="TblRole" />
+            <End Role="TblMember" EntitySet="TblMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblProject_TblLanguage" Association="Self.FK_TblProject_TblLanguage">
+            <End Role="TblLanguage" EntitySet="TblLanguage" />
+            <End Role="TblProject" EntitySet="TblProject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblProject_TblMember" Association="Self.FK_TblProject_TblMember">
+            <End Role="TblMember" EntitySet="TblMember" />
+            <End Role="TblProject" EntitySet="TblProject" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KucsaManagementDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TblCourse">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CourseFaculty" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TblMembers" Relationship="Self.FK_TblMember_TblCourse" FromRole="TblCourse" ToRole="TblMember" />
+        </EntityType>
+        <EntityType Name="TblLanguage">
+          <Key>
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="LanguageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Language" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LanguageAuthor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LanguageWebsite" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="LanguageTuitorial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblProjects" Relationship="Self.FK_TblProject_TblLanguage" FromRole="TblLanguage" ToRole="TblProject" />
+        </EntityType>
+        <EntityType Name="TblMember">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="MemberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MemberRegistration" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MemberThumbnail" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="MemberBigPicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="ModuleId" Type="Int32" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="TimeJoined" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="TblCourse" Relationship="Self.FK_TblMember_TblCourse" FromRole="TblMember" ToRole="TblCourse" />
+          <NavigationProperty Name="TblModule" Relationship="Self.FK_TblMember_TblModule" FromRole="TblMember" ToRole="TblModule" />
+          <NavigationProperty Name="TblRole" Relationship="Self.FK_TblMember_TblRole" FromRole="TblMember" ToRole="TblRole" />
+          <NavigationProperty Name="TblProjects" Relationship="Self.FK_TblProject_TblMember" FromRole="TblMember" ToRole="TblProject" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TblModule">
+          <Key>
+            <PropertyRef Name="ModuleId" />
+          </Key>
+          <Property Name="ModuleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModuleLeader" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TblMembers" Relationship="Self.FK_TblMember_TblModule" FromRole="TblModule" ToRole="TblMember" />
+        </EntityType>
+        <EntityType Name="TblProject">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProjectDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProjectLink" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProjectThumbnail" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProjectBigPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="LanguageId" Type="Int32" Nullable="false" />
+          <Property Name="MemberId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TblLanguage" Relationship="Self.FK_TblProject_TblLanguage" FromRole="TblProject" ToRole="TblLanguage" />
+          <NavigationProperty Name="TblMember" Relationship="Self.FK_TblProject_TblMember" FromRole="TblProject" ToRole="TblMember" />
+        </EntityType>
+        <EntityType Name="TblRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TblMembers" Relationship="Self.FK_TblMember_TblRole" FromRole="TblRole" ToRole="TblMember" />
+        </EntityType>
+        <Association Name="FK_TblMember_TblCourse">
+          <End Role="TblCourse" Type="Self.TblCourse" Multiplicity="1" />
+          <End Role="TblMember" Type="Self.TblMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCourse">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="TblMember">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblProject_TblLanguage">
+          <End Role="TblLanguage" Type="Self.TblLanguage" Multiplicity="1" />
+          <End Role="TblProject" Type="Self.TblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblLanguage">
+              <PropertyRef Name="LanguageId" />
+            </Principal>
+            <Dependent Role="TblProject">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMember_TblModule">
+          <End Role="TblModule" Type="Self.TblModule" Multiplicity="0..1" />
+          <End Role="TblMember" Type="Self.TblMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblModule">
+              <PropertyRef Name="ModuleId" />
+            </Principal>
+            <Dependent Role="TblMember">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMember_TblRole">
+          <End Role="TblRole" Type="Self.TblRole" Multiplicity="1" />
+          <End Role="TblMember" Type="Self.TblMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblRole">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="TblMember">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblProject_TblMember">
+          <End Role="TblMember" Type="Self.TblMember" Multiplicity="1" />
+          <End Role="TblProject" Type="Self.TblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblMember">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="TblProject">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KucsaManagementDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TblCourses" EntityType="Self.TblCourse" />
+          <EntitySet Name="TblLanguages" EntityType="Self.TblLanguage" />
+          <EntitySet Name="TblMembers" EntityType="Self.TblMember" />
+          <EntitySet Name="TblModules" EntityType="Self.TblModule" />
+          <EntitySet Name="TblProjects" EntityType="Self.TblProject" />
+          <EntitySet Name="TblRoles" EntityType="Self.TblRole" />
+          <AssociationSet Name="FK_TblMember_TblCourse" Association="Self.FK_TblMember_TblCourse">
+            <End Role="TblCourse" EntitySet="TblCourses" />
+            <End Role="TblMember" EntitySet="TblMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblProject_TblLanguage" Association="Self.FK_TblProject_TblLanguage">
+            <End Role="TblLanguage" EntitySet="TblLanguages" />
+            <End Role="TblProject" EntitySet="TblProjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMember_TblModule" Association="Self.FK_TblMember_TblModule">
+            <End Role="TblModule" EntitySet="TblModules" />
+            <End Role="TblMember" EntitySet="TblMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMember_TblRole" Association="Self.FK_TblMember_TblRole">
+            <End Role="TblRole" EntitySet="TblRoles" />
+            <End Role="TblMember" EntitySet="TblMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblProject_TblMember" Association="Self.FK_TblProject_TblMember">
+            <End Role="TblMember" EntitySet="TblMembers" />
+            <End Role="TblProject" EntitySet="TblProjects" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KucsaManagementDatabaseModelStoreContainer" CdmEntityContainer="KucsaManagementDatabaseEntities">
+          <EntitySetMapping Name="TblCourses">
+            <EntityTypeMapping TypeName="KucsaManagementDatabaseModel.TblCourse">
+              <MappingFragment StoreEntitySet="TblCourse">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="CourseFaculty" ColumnName="CourseFaculty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblLanguages">
+            <EntityTypeMapping TypeName="KucsaManagementDatabaseModel.TblLanguage">
+              <MappingFragment StoreEntitySet="TblLanguage">
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="LanguageAuthor" ColumnName="LanguageAuthor" />
+                <ScalarProperty Name="LanguageWebsite" ColumnName="LanguageWebsite" />
+                <ScalarProperty Name="LanguageTuitorial" ColumnName="LanguageTuitorial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblMembers">
+            <EntityTypeMapping TypeName="KucsaManagementDatabaseModel.TblMember">
+              <MappingFragment StoreEntitySet="TblMember">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="MemberName" ColumnName="MemberName" />
+                <ScalarProperty Name="MemberRegistration" ColumnName="MemberRegistration" />
+                <ScalarProperty Name="MemberThumbnail" ColumnName="MemberThumbnail" />
+                <ScalarProperty Name="MemberBigPicture" ColumnName="MemberBigPicture" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="TimeJoined" ColumnName="TimeJoined" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblModules">
+            <EntityTypeMapping TypeName="KucsaManagementDatabaseModel.TblModule">
+              <MappingFragment StoreEntitySet="TblModule">
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ModuleLeader" ColumnName="ModuleLeader" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblProjects">
+            <EntityTypeMapping TypeName="KucsaManagementDatabaseModel.TblProject">
+              <MappingFragment StoreEntitySet="TblProject">
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="ProjectTitle" ColumnName="ProjectTitle" />
+                <ScalarProperty Name="ProjectDesc" ColumnName="ProjectDesc" />
+                <ScalarProperty Name="ProjectLink" ColumnName="ProjectLink" />
+                <ScalarProperty Name="ProjectThumbnail" ColumnName="ProjectThumbnail" />
+                <ScalarProperty Name="ProjectBigPic" ColumnName="ProjectBigPic" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblRoles">
+            <EntityTypeMapping TypeName="KucsaManagementDatabaseModel.TblRole">
+              <MappingFragment StoreEntitySet="TblRole">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
