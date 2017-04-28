@@ -67,7 +67,7 @@ namespace KucsaManagementSoftware
             int rolId = Convert.ToInt32(metroLabelRoleId.Text);
             string roleName = MetroTextBoxRoleName.Text;
 
-            //validate not to duplicate modules
+            //validate not to duplicate Roles
             if (!IsValidRole(roleName))
             {
                 MetroMessageBox.Show(this, "Role with the name " + roleName + " already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -145,6 +145,35 @@ namespace KucsaManagementSoftware
             MetroTextBoxRoleName.Text = selectedRow.Cells["RoleName"].Value.ToString();
 
             MetroButtonSaveRole.Text = "Update";
+        }
+
+        private void MetroButtonDelete_Click(object sender, EventArgs e)
+        {
+            int deleteID = Convert.ToInt32(metroLabelRoleId.Text);
+            if (metroLabelRoleId.Text != "0" && metroLabelRoleId.Text != null && isValidDelete(deleteID))
+            {
+                using (var context = new KucsaManagementDatabaseEntities())
+                {
+                    var delRole = new TblRole { RoleId = deleteID };
+                    context.TblRoles.Attach(delRole);
+                    context.TblRoles.Remove(delRole);
+                    context.SaveChanges();
+                    MetroMessageBox.Show(this, delRole.RoleName + " Removed Successfully from the system!", "Successful Removal", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    InitializeRoleList();
+                }
+            }
+        }
+
+        private bool isValidDelete(int deleteID)
+        {
+            //Method to check if an entry is used as a foreign key, it should return false
+            using(var context = new KucsaManagementDatabaseEntities())
+            {
+                var roleToDelete = context.TblMembers.SingleOrDefault(role => role.RoleId == deleteID);
+                if (roleToDelete != null) { return false; }
+            }
+
+            return true;
         }
     }
 }

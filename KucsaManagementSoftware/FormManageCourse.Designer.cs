@@ -42,12 +42,14 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.MetroGridCourses = new MetroFramework.Controls.MetroGrid();
+            this.MetroButtonDelete = new MetroFramework.Controls.MetroButton();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MetroGridCourses)).BeginInit();
             this.SuspendLayout();
             // 
             // metroPanel1
             // 
+            this.metroPanel1.Controls.Add(this.MetroButtonDelete);
             this.metroPanel1.Controls.Add(this.metroTextBoxFaculty);
             this.metroPanel1.Controls.Add(this.metroLabel4);
             this.metroPanel1.Controls.Add(this.metroLabelCourseId);
@@ -156,7 +158,7 @@
             // 
             // MetroButtonClearCourses
             // 
-            this.MetroButtonClearCourses.Location = new System.Drawing.Point(221, 147);
+            this.MetroButtonClearCourses.Location = new System.Drawing.Point(176, 147);
             this.MetroButtonClearCourses.Name = "MetroButtonClearCourses";
             this.MetroButtonClearCourses.Size = new System.Drawing.Size(75, 23);
             this.MetroButtonClearCourses.TabIndex = 4;
@@ -166,7 +168,7 @@
             // 
             // MetroButtonSaveCourse
             // 
-            this.MetroButtonSaveCourse.Location = new System.Drawing.Point(123, 147);
+            this.MetroButtonSaveCourse.Location = new System.Drawing.Point(64, 147);
             this.MetroButtonSaveCourse.Name = "MetroButtonSaveCourse";
             this.MetroButtonSaveCourse.Size = new System.Drawing.Size(75, 23);
             this.MetroButtonSaveCourse.TabIndex = 3;
@@ -237,6 +239,16 @@
             this.MetroGridCourses.TabIndex = 4;
             this.MetroGridCourses.SelectionChanged += new System.EventHandler(this.MetroGridCourses_SelectionChanged);
             // 
+            // MetroButtonDelete
+            // 
+            this.MetroButtonDelete.Location = new System.Drawing.Point(288, 147);
+            this.MetroButtonDelete.Name = "MetroButtonDelete";
+            this.MetroButtonDelete.Size = new System.Drawing.Size(75, 23);
+            this.MetroButtonDelete.TabIndex = 10;
+            this.MetroButtonDelete.Text = "Delete";
+            this.MetroButtonDelete.UseSelectable = true;
+            this.MetroButtonDelete.Click += new System.EventHandler(this.MetroButtonDelete_Click);
+            // 
             // FormManageCourse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -270,5 +282,6 @@
         private MetroFramework.Controls.MetroGrid MetroGridCourses;
         private MetroFramework.Controls.MetroTextBox metroTextBoxFaculty;
         private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroButton MetroButtonDelete;
     }
 }

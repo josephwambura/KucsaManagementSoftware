@@ -149,5 +149,34 @@ namespace KucsaManagementSoftware
 
             MetroButtonSaveCourse.Text = "Update";
         }
+
+        private void MetroButtonDelete_Click(object sender, EventArgs e)
+        {
+            int deleteID = Convert.ToInt32(metroLabelCourseId.Text);
+            if (metroLabelCourseId.Text != "0" && metroLabelCourseId.Text != null && isValidDelete(deleteID))
+            {
+                using (var context = new KucsaManagementDatabaseEntities())
+                {
+                    var delCourse = new TblCourse { CourseId = deleteID };
+                    context.TblCourses.Attach(delCourse);
+                    context.TblCourses.Remove(delCourse);
+                    context.SaveChanges();
+                    MetroMessageBox.Show(this, delCourse.CourseName + " Removed Successfully from the system!", "Successful Removal", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    InitializeCourseList();
+                }
+            }
+        }
+
+        private bool isValidDelete(int deleteID)
+        {
+            //Method to check if an entry is used as a foreign key, it should return false
+            using (var context = new KucsaManagementDatabaseEntities())
+            {
+                var courseToDelete = context.TblMembers.SingleOrDefault(course => course.CourseId == deleteID);
+                if (courseToDelete != null) { return false; }
+            }
+
+            return true;
+        }
     }
 }

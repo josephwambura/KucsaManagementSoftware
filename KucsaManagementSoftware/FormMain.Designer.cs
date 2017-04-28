@@ -58,6 +58,7 @@
             this.MetroTextBoxMemberName = new MetroFramework.Controls.MetroTextBox();
             this.metroLabelModule = new MetroFramework.Controls.MetroLabel();
             this.metroLabelMemberName = new MetroFramework.Controls.MetroLabel();
+            this.MetroButtonDelete = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.MetroGridMembers)).BeginInit();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMemberPicture)).BeginInit();
@@ -122,6 +123,7 @@
             // 
             // metroPanel1
             // 
+            this.metroPanel1.Controls.Add(this.MetroButtonDelete);
             this.metroPanel1.Controls.Add(this.MetroTextBoxPassword);
             this.metroPanel1.Controls.Add(this.metroLabel7);
             this.metroPanel1.Controls.Add(this.metroLabel5);
@@ -474,6 +476,17 @@
             this.metroLabelMemberName.TabIndex = 14;
             this.metroLabelMemberName.Text = "Member Name:";
             // 
+            // MetroButtonDelete
+            // 
+            this.MetroButtonDelete.Location = new System.Drawing.Point(514, 238);
+            this.MetroButtonDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.MetroButtonDelete.Name = "MetroButtonDelete";
+            this.MetroButtonDelete.Size = new System.Drawing.Size(100, 28);
+            this.MetroButtonDelete.TabIndex = 38;
+            this.MetroButtonDelete.Text = "Delete";
+            this.MetroButtonDelete.UseSelectable = true;
+            this.MetroButtonDelete.Click += new System.EventHandler(this.MetroButtonDelete_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -527,6 +540,7 @@
         private MetroFramework.Controls.MetroLabel metroLabelMemberName;
         private MetroFramework.Controls.MetroTextBox MetroTextBoxPassword;
         private MetroFramework.Controls.MetroLabel metroLabel7;
+        private MetroFramework.Controls.MetroButton MetroButtonDelete;
     }
 }
 

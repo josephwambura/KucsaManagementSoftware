@@ -25,8 +25,7 @@ namespace KucsaManagementSoftware
 
         public FormMain()
         {
-            //Data.SeedData dsd = new Data.SeedData();
-            //dsd.Initialize();
+            
 
             InitializeComponent();
 
@@ -366,6 +365,36 @@ namespace KucsaManagementSoftware
             
             //put this to close the hidden login window, hidden during the login step
             Application.Exit();
+        }
+
+        private void MetroButtonDelete_Click(object sender, EventArgs e)
+        {
+            int deleteID = Convert.ToInt32(metroLabelMemberId.Text);
+            if (metroLabelMemberId.Text != "0" && metroLabelMemberId.Text != null && isValidDelete(deleteID))
+            {
+                using (var context = new KucsaManagementDatabaseEntities())
+                {
+                    var delUser = new TblMember { MemberId = deleteID };
+                    context.TblMembers.Attach(delUser);
+                    context.TblMembers.Remove(delUser);
+                    context.SaveChanges();
+                    MetroMessageBox.Show(this, delUser.MemberName + " Removed Successfully from the system!", "Successful Removal", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    LoadMembers();
+                }
+            }
+        }
+
+        private bool isValidDelete(int deleteID)
+        {
+            //Method to check if an entry is used as a foreign key, it should return false
+            using (var context = new KucsaManagementDatabaseEntities())
+            {
+                var memberToDelete = context.TblProjects.SingleOrDefault(member => member.MemberId == deleteID);
+                if (memberToDelete != null) { return false; }
+                else { return true; }
+            }
+
+            //return true;
         }
     }
 }

@@ -118,6 +118,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>KucsaManagementDbModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="LogErrors.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>

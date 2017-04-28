@@ -150,5 +150,34 @@ namespace KucsaManagementSoftware
                 refreshModuleList();
             }
         }
+
+        private void MetroButtonDelete_Click(object sender, EventArgs e)
+        {
+            int deleteID = Convert.ToInt32(metroLabelModuleId.Text);
+            if (metroLabelModuleId.Text != "0" && metroLabelModuleId.Text != null && isValidDelete(deleteID))
+            {
+                using (var context = new KucsaManagementDatabaseEntities())
+                {
+                    var delModule = new TblModule { ModuleId = deleteID };
+                    context.TblModules.Attach(delModule);
+                    context.TblModules.Remove(delModule);
+                    context.SaveChanges();
+                    MetroMessageBox.Show(this, delModule.Title + " Removed Successfully from the system!", "Successful Removal", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    InitializeModuleList();
+                }
+            }
+        }
+
+        private bool isValidDelete(int deleteID)
+        {
+            //Method to check if an entry is used as a foreign key, it should return false
+            using (var context = new KucsaManagementDatabaseEntities())
+            {
+                var moduleToDelete = context.TblMembers.SingleOrDefault(module => module.ModuleId == deleteID);
+                if (moduleToDelete != null) { return false; }
+            }
+
+            return true;
+        }
     }
 }

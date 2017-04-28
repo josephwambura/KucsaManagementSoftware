@@ -37,7 +37,8 @@ namespace KucsaManagementSoftware
                     MetroComboBoxUser.ValueMember = "MemberId";
                 }
                 MetroButtonLogin.Enabled = true;
-                //Cursor.Current = Cursors.WaitCursor;
+                //Data.SeedData dsd = new Data.SeedData();
+                //dsd.Initialize();
             }
             catch (Exception)
             {
@@ -55,6 +56,8 @@ namespace KucsaManagementSoftware
 
         private void MetroButtonLogin_Click(object sender, EventArgs e)
         {
+            //nothing much has been done here, login implementation deserves more than this
+
             int userName = Convert.ToInt32(MetroComboBoxUser.SelectedValue);
             string password = MetroTextBoxPassword.Text;
             try

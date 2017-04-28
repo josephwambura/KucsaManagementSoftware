@@ -40,12 +40,14 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.MetroGridRoles = new MetroFramework.Controls.MetroGrid();
+            this.MetroButtonDelete = new MetroFramework.Controls.MetroButton();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MetroGridRoles)).BeginInit();
             this.SuspendLayout();
             // 
             // metroPanel1
             // 
+            this.metroPanel1.Controls.Add(this.MetroButtonDelete);
             this.metroPanel1.Controls.Add(this.metroLabelRoleId);
             this.metroPanel1.Controls.Add(this.MetroTextBoxRoleName);
             this.metroPanel1.Controls.Add(this.metroLabel3);
@@ -113,7 +115,7 @@
             // 
             // MetroButtonClearRoles
             // 
-            this.MetroButtonClearRoles.Location = new System.Drawing.Point(221, 147);
+            this.MetroButtonClearRoles.Location = new System.Drawing.Point(177, 147);
             this.MetroButtonClearRoles.Name = "MetroButtonClearRoles";
             this.MetroButtonClearRoles.Size = new System.Drawing.Size(75, 23);
             this.MetroButtonClearRoles.TabIndex = 4;
@@ -123,7 +125,7 @@
             // 
             // MetroButtonSaveRole
             // 
-            this.MetroButtonSaveRole.Location = new System.Drawing.Point(123, 147);
+            this.MetroButtonSaveRole.Location = new System.Drawing.Point(71, 147);
             this.MetroButtonSaveRole.Name = "MetroButtonSaveRole";
             this.MetroButtonSaveRole.Size = new System.Drawing.Size(75, 23);
             this.MetroButtonSaveRole.TabIndex = 3;
@@ -194,6 +196,16 @@
             this.MetroGridRoles.TabIndex = 4;
             this.MetroGridRoles.SelectionChanged += new System.EventHandler(this.MetroGridRoles_SelectionChanged);
             // 
+            // MetroButtonDelete
+            // 
+            this.MetroButtonDelete.Location = new System.Drawing.Point(277, 147);
+            this.MetroButtonDelete.Name = "MetroButtonDelete";
+            this.MetroButtonDelete.Size = new System.Drawing.Size(75, 23);
+            this.MetroButtonDelete.TabIndex = 8;
+            this.MetroButtonDelete.Text = "Delete";
+            this.MetroButtonDelete.UseSelectable = true;
+            this.MetroButtonDelete.Click += new System.EventHandler(this.MetroButtonDelete_Click);
+            // 
             // FormManageRole
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -225,5 +237,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroGrid MetroGridRoles;
+        private MetroFramework.Controls.MetroButton MetroButtonDelete;
     }
 }
